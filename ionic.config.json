@@ -1,0 +1,7 @@
+{
+  "name": "ApiRickAndMorty",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
