@@ -26,7 +26,7 @@ export class HomePage {
     })
   }
 
-  async openModal(character: any) {
+  async abrirModal(character: any) {
       const modal = await this.modalCtrl.create({
         component: ModalComponent,
         componentProps: {
@@ -35,4 +35,6 @@ export class HomePage {
     });
     return await modal.present();
   }
+
+  
 }

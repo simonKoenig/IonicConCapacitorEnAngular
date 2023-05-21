@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-title>Detalles del personaje</ion-title>
@@ -10,14 +9,23 @@
     <ion-card-header>
       <ion-card-title>{{ character.name }}</ion-card-title>
     </ion-card-header>
-    <ion-card-content class="character-detalles">
+    <ion-card-content class="character-detalles ion-padding" >
       <img src="{{character.image}}" class="imagen-personaje">
       <div class="detalles-div">
-        <ion-label>Especie: {{ character.species }}</ion-label> <br>
-        <ion-label>Estado: {{ character.status }}</ion-label> <br>
-        <ion-label>Género: {{ character.gender }}</ion-label> <br>
-        <ion-label>Origen: {{ character.origin.name }}</ion-label> <br>
+        <ion-label><b>Especie: </b>{{ character.species }}</ion-label> <br>
+        <ion-label><b>Estado: </b>{{ character.status }}</ion-label> <br>
+        <ion-label><b>Género: </b>{{ character.gender }}</ion-label> <br>
+        <ion-label><b>Origen: </b>{{ character.origin.name }}</ion-label> <br>
       </div>
     </ion-card-content>
   </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <div class="ion-text-center"> 
+        <ion-button (click)="cerrarModal()" class="boton" color="primary">Atrás</ion-button>
+      </div>
+    </ion-card-content> 
+  </ion-card>
+  
 </ion-content>

@@ -12,5 +12,12 @@
 }
 
 .detalles-div {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.boton {
+    width: max-content;
+    height: 50px;
 }
