@@ -13,14 +13,5 @@ export class AppComponent {
   constructor(
     private http: HttpClient,
   ) {}
-
-  // guardo el contenido de 
-  ngOnInit() {
-    this.http.get<any>('https://rickandmortyapi.com/api/character')
-    .subscribe(res => {
-      console.log(res);
-      this.characters = res.result;
-    })
-  }
       
 }

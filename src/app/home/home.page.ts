@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Preferences } from '@capacitor/preferences';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +14,14 @@ export class HomePage {
 
   constructor(
     private http: HttpClient,
+    private alertController: AlertController
   ) {}
+
 
   ngOnInit() {
     const fetchData = async () => {
-    const { value: datosExistentes } = await Preferences.get({ key: 'data' });
-    if (datosExistentes === null) {
+    const { value: datosLocal } = await Preferences.get({ key: 'data' });
+    if (datosLocal === null) {
       this.http.get<any>('https://rickandmortyapi.com/api/character/?page=1')
       .subscribe(res => {
         console.log("api");
@@ -31,8 +34,6 @@ export class HomePage {
           });
         };
         saveData(); // Llama a la función para guardar los datos
-        //setData(res.results);
-        //setResults(res.results);
       })
       /*.catch(error => {
         console.log('Error:', error);
@@ -42,19 +43,54 @@ export class HomePage {
       });*/
   
     } else {
-      // Obtener los datos de las preferencias
-      //const parsedData = datosExistentes !== null ? JSON.parse(datosExistentes) : null;
-
       // Mostrar los datos de las preferencias en la vista
-      this.characters = datosExistentes !== null ? JSON.parse(datosExistentes) : null;
-
-
-
-      //setData(parsedData);
-      //setResults(parsedData)
+      console.log("guardado");
+      this.characters = datosLocal !== null ? JSON.parse(datosLocal) : null;
       //setLoad(true);
     }
   };
   fetchData(); // Llama a la función fetchData para iniciar el proceso
   }
+
+  async confirmarBorrado(id: number, nombre:string) {
+    const alert = await this.alertController.create({
+      header: 'Confirmar eliminación',
+      message: '¿Estás seguro de que deseas eliminar a ${nombre}?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Eliminación cancelada');
+          }
+        },
+        {
+          text: 'Eliminar',
+          handler: () => {
+            this.borrar(id);
+          }
+        }
+      ]
+    });
+  
+    alert.message = `¿Estás seguro de que deseas eliminar a ${nombre}?`;
+    await alert.present();
+
+  }
+  
+
+
+
+
+  borrar(id:number) {
+    //const newData = [...this.characters];
+    const index = this.characters.findIndex(character => character.id === id);
+    if (index !== -1) {
+      this.characters.splice(index, 1);
+    }
+    console.log(this.characters);
+    Preferences.set({ key: 'data', value: JSON.stringify(this.characters) });
+  }
+
 }
