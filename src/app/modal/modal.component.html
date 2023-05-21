@@ -1,0 +1,23 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles del personaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ character.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="character-detalles">
+      <img src="{{character.image}}" class="imagen-personaje">
+      <div class="detalles-div">
+        <ion-label>Especie: {{ character.species }}</ion-label> <br>
+        <ion-label>Estado: {{ character.status }}</ion-label> <br>
+        <ion-label>Género: {{ character.gender }}</ion-label> <br>
+        <ion-label>Origen: {{ character.origin.name }}</ion-label> <br>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

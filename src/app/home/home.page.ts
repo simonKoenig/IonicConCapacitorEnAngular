@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +14,7 @@ export class HomePage {
 
   constructor(
     private http: HttpClient,
+    private modalCtrl: ModalController
   ) {}
 
   // guardo el contenido de la api en la variable characters
@@ -23,4 +26,13 @@ export class HomePage {
     })
   }
 
+  async openModal(character: any) {
+      const modal = await this.modalCtrl.create({
+        component: ModalComponent,
+        componentProps: {
+          character: character
+        }
+    });
+    return await modal.present();
+  }
 }

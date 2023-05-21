@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let character of characters">
+    <ion-item *ngFor="let character of characters" (click)="openModal(character)">
       <ion-avatar slot="start">
         <img src="{{character.image}}" alt="">
       </ion-avatar>
