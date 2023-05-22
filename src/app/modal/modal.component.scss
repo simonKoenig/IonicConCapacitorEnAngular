@@ -1,0 +1,23 @@
+.character-detalles {
+    display: flex;
+    align-items: center;
+}
+
+.imagen-personaje{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.detalles-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.boton {
+    width: max-content;
+    height: 50px;
+}

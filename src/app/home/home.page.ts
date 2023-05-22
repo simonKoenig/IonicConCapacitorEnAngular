@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from '../modal/modal.component';
 import { Preferences } from '@capacitor/preferences';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
@@ -17,7 +19,8 @@ export class HomePage {
   constructor(
     private http: HttpClient,
     private alertController: AlertController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private modalCtrl: ModalController,
   ) {}
 
 
@@ -53,7 +56,6 @@ export class HomePage {
     fetchData(); // Llama a la función fetchData para iniciar el proceso
   }
   
-
   async confirmarBorrado(id: number, nombre:string) {
     const alert = await this.alertController.create({
       header: 'Confirmar eliminación',
@@ -81,10 +83,6 @@ export class HomePage {
     await alert.present();
 
   }
-  
-
-
-
 
   borrar(id:number) {
     //const newData = [...this.characters];
@@ -106,4 +104,14 @@ export class HomePage {
     toast.present();
   }
 
+  async abrirModal(character: any) {
+      const modal = await this.modalCtrl.create({
+        component: ModalComponent,
+        componentProps: {
+          character: character
+        }
+    });
+    return await modal.present();
+  }
+ 
 }
