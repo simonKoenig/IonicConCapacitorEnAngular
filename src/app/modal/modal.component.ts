@@ -23,7 +23,7 @@ export class ModalComponent  implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  callFunctionInHome(id:number, nombre:string) {
+  llamadaHome(id:number, nombre:string) {
     if (this.homeView) {
       this.homeView.confirmarBorrado(id, nombre); // Llamamos a la función del componente Home
     }
