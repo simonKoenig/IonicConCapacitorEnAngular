@@ -28,7 +28,7 @@ export class HomePage {
     const fetchData = async () => {
       const { value: datosLocal } = await Preferences.get({ key: 'data' });
       if (datosLocal === null) {
-        this.http.get<any>('https://rickandmortyapi.com/apiii/character/?page=1')
+        this.http.get<any>('https://rickandmortyapi.com/api/character/?page=1')
           .subscribe({
             next: (res) => {
               console.log("api");
