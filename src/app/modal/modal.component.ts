@@ -9,6 +9,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class ModalComponent  implements OnInit {
   character: any;
+  homeView: any;
   constructor(
     private navParams: NavParams,
     private modalCtrl: ModalController
@@ -20,6 +21,12 @@ export class ModalComponent  implements OnInit {
 
   cerrarModal(){
     this.modalCtrl.dismiss();
+  }
+
+  callFunctionInHome(id:number, nombre:string) {
+    if (this.homeView) {
+      this.homeView.confirmarBorrado(id, nombre); // Llamamos a la función del componente Home
+    }
   }
 
 }

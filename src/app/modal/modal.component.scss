@@ -17,7 +17,7 @@
     justify-content: center;
 }
 
-.boton {
-    width: max-content;
-    height: 50px;
+.botones{
+    display: flex;
+    justify-content: space-evenly;
 }

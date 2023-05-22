@@ -92,6 +92,7 @@ export class HomePage {
     }
     console.log(this.characters);
     Preferences.set({ key: 'data', value: JSON.stringify(this.characters) });
+    this.modalCtrl.dismiss()
   }
 
   async Toast(mensaje: string, tipo: string) {
@@ -108,7 +109,8 @@ export class HomePage {
       const modal = await this.modalCtrl.create({
         component: ModalComponent,
         componentProps: {
-          character: character
+          character: character,
+          homeView: this
         }
     });
     return await modal.present();

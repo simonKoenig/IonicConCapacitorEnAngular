@@ -21,11 +21,13 @@
   </ion-card>
 
   <ion-card>
-    <ion-card-content>
-      <div class="ion-text-center"> 
-        <ion-button (click)="cerrarModal()" class="boton" color="primary">Atrás</ion-button>
-      </div>
+    <ion-card-content class="botones">
+        <ion-button color="primary" slot="start" (click)="cerrarModal()">
+          Atrás
+        </ion-button>
+        <ion-button color="danger" slot="end" (click)="callFunctionInHome(character.id, character.name)">
+          Eliminar
+        </ion-button>
     </ion-card-content> 
   </ion-card>
-  
 </ion-content>
