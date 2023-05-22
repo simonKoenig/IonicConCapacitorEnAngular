@@ -16,7 +16,7 @@ export class HomePage {
 
   constructor(
     private http: HttpClient,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
     private alertController: AlertController
   ) {}
 
